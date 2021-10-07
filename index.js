@@ -40,4 +40,8 @@ app.get( '/', async( req, res ) => {
 });
 
 // Tell the app where to listen
-// app.listen(5000, () => console.log('App running here: http://localhost:5000'));
+app.set('port', (process.env.PORT || 5000));
+
+app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
+});
