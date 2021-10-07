@@ -17,6 +17,7 @@
 6. Connect to appropriate repository
 7. Confirm details and click "Enable Automatic Deploys"
 8. Commit changes to GitHub and confirm integration
+9. View live app: heroku open
 
 ## File Explanations ##
 
