@@ -1,26 +1,20 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.1.5",
-  "description": "A sample Node.js app using Express 4",
+  "name": "hs-api-starter",
+  "version": "1.0.0",
+  "description": "A starter setup for HubSpot oAuth integration",
   "main": "index.js",
   "scripts": {
-    "start": "node project/start.js"
+    "start": "node index.js"
   },
   "dependencies": {
-    "ejs": "^2.5.6",
-    "express": "^4.15.2"
-  },
-  "engines": {
-    "node": "8.9.1"
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "pug": "^3.0.2",
+    "axios": "^0.22.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/jgoddard2021/hs-api-starter"
   },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
   "license": "MIT"
 }

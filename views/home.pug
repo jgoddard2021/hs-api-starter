@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+    head
+        title HubSpot OAuth
+    body
+        h1 Hubspot OAuth
+        
+        if results
+            each result in results
+                p #{result.id} #{result.name}
+                
+        if token
+            p You're authenticated using the token: #{token}
+            p Your account has these cool contacts:
+            ul
+                each contact in contacts
+                    li #{contact.properties.name}
+            //- form(class="clickup-details" method="POST" action="/users/login")
+            //-     label(for="clickup-api-key") ClickUp API Key
+            //-     input(name="clickup-api-key" type="password")
+            //-     button(name="submit-button") Submit
+        else
+            p You're not authenticated
+            p Please intall me #[a(href=`${authUrl}`) here]

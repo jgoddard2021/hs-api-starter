@@ -19,12 +19,28 @@
 8. Commit changes to GitHub and confirm integration
 9. View live app: heroku open
 
+## Setup HubSpot Developer Account ##
+1. Create HS Developer account https://developers.hubspot.com
+2. Click "Create a test account" and follow instructions
+3. Change account names for developer account and test account for easier management
+
+## Setup HubSpot Integration ##
+1. Log into Developer account
+2. Confirm test account is set up
+3. Create a new app
+4. Set name
+5. In Auth tab, add a required scope
+6. Fill in redirect URL: http://localhost:5000/oauth-callback
+7. Copy Client ID  and Client Secret to .env file
+
+
 ## File Explanations ##
 
-### app.json ###
 ### package.json ###
+Specifies necessary node modules.
+
 ### Procfile ###
-### /project/ ###
-### /project/start.js ###
-### /project/html/helpers/head.ejs ###
-### /project/html/pages/index.ejs ###
+Points node to appropriate file when running app.
+
+### /views/ ###
+Provides view files. Currently using PUG templating engine.
