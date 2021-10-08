@@ -31,8 +31,23 @@
 4. Set name
 5. In Auth tab, add a required scope
 6. Fill in redirect URL: http://localhost:5000/oauth-callback
-7. Copy Client ID  and Client Secret to .env file
+7. Copy Client ID Client Secret, Redirect URI, and Scope to .env file
 
+## Setup PostgreSQL Database ##
+0. Install PostgreSQL locally: https://devcenter.heroku.com/articles/heroku-postgresql#local-setup
+0. Check if PostgreSQL is already provisioned: heroku addons
+1. Provision Postgres database: heroku addons:create heroku-postgresql:hobby-dev
+2. Add Database URL to .env file
+3. Access database: heroku pg:psql
+4. Create table: CREATE TABLE <table_name> ( <column_name> <data_type>, <column_name> <data_type> );
+
+***
+5. Add columns as necessary: 
+
+HubSpot OAuth tutorial: https://app.hubspot.com/academy/2883648/lessons/593/2969
+
+## TO DO ##
+- Set up local PostgreSQL database
 
 ## File Explanations ##
 
