@@ -68,25 +68,17 @@ app.get( '/oauth-callback', async( req, res ) => {
         // Check database for account ID
         await client.query( `SELECT hs_account_id FROM users WHERE hs_account_id IN (${ hubID });`, ( err, res ) => {
 
-            // if( err ) throw err;
+            if( err ) throw err;
 
-            // for( let row of res.rows ) {
+            for( let row of res.rows ) {
 
-            //     console.log( JSON.stringify( row ) );
+                console.log( JSON.stringify( row ) );
 
-            // }
-
-            console.log( 'yes' );
-
-            console.log( err );
-
-            console.log( res );
+            }
 
             client.end();
 
         } );
-
-        console.log( 'no' );
 
         // client.query( 'SELECT table_schema,table_name FROM information_schema.tables;', ( err, res ) => {
         //     if( err ) throw err;
