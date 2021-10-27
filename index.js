@@ -80,6 +80,9 @@ app.get( '/oauth-callback', async( req, res ) => {
 
         } );
 
+        // Display authorization link
+        res.render( 'home' );
+
         // client.query( 'SELECT table_schema,table_name FROM information_schema.tables;', ( err, res ) => {
         //     if( err ) throw err;
         //     for( let row of res.rows ) {
