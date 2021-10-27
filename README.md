@@ -32,6 +32,7 @@
 5. In Auth tab, add a required scope
 6. Fill in redirect URL: http://localhost:5000/oauth-callback
 7. Copy Client ID Client Secret, Redirect URI, and Scope to .env file
+8. Add environment variables to Heroku: heroku config:set VARIABLE=variable
 
 ## Setup PostgreSQL Database ##
 0. Install PostgreSQL locally: https://devcenter.heroku.com/articles/heroku-postgresql#local-setup

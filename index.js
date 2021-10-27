@@ -66,19 +66,21 @@ app.get( '/oauth-callback', async( req, res ) => {
         client.connect();
 
         // Check database for account ID
-        // await client.query( `SELECT hs_account_id FROM users WHERE hs_account_id IN (${ hubID });`, ( err, res ) => {
+        await client.query( `SELECT hs_account_id FROM users WHERE hs_account_id IN (${ hubID });`, ( err, res ) => {
 
-        //     if( err ) throw err;
+            if( err ) throw err;
 
-        //     for( let row of res.rows ) {
+            // for( let row of res.rows ) {
 
-        //         console.log( JSON.stringify( row ) );
+            //     console.log( JSON.stringify( row ) );
 
-        //     }
+            // }
 
-        //     client.end();
+            res.json( row );
 
-        // } );
+            client.end();
+
+        } );
 
         // client.query( 'SELECT table_schema,table_name FROM information_schema.tables;', ( err, res ) => {
         //     if( err ) throw err;
@@ -96,19 +98,19 @@ app.get( '/oauth-callback', async( req, res ) => {
         // } else {
         // Get account ID
         // Store account ID, refresh token, and access token in database
-        await client.query( `INSERT INTO users ( hs_account_id, hs_auth_token, hs_refresh_token ) VALUES ( ${ hubID }, '${ accessToken }', '${ refreshToken }' )`, ( err, res ) => {
+        // await client.query( `INSERT INTO users ( hs_account_id, hs_auth_token, hs_refresh_token ) VALUES ( ${ hubID }, '${ accessToken }', '${ refreshToken }' )`, ( err, res ) => {
 
-            if( err ) throw err;
+        //     if( err ) throw err;
 
-            for( let row of res.rows ) {
+        //     for( let row of res.rows ) {
 
-                console.log( JSON.stringify( row ) );
+        //         console.log( JSON.stringify( row ) );
 
-            }
+        //     }
 
-            client.end();
+        //     client.end();
 
-        } );
+        // } );
         // Display confirmation message
         // res.redirect( '/' );
         // }
