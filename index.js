@@ -68,7 +68,7 @@ app.get( '/oauth-callback', async( req, res ) => {
         // Check database for account ID
         await client.query( `SELECT hs_account_id FROM users WHERE hs_account_id IN (${ hubID });`, ( err, res ) => {
 
-            if( err ) throw err;
+            // if( err ) throw err;
 
             // for( let row of res.rows ) {
 
@@ -76,7 +76,9 @@ app.get( '/oauth-callback', async( req, res ) => {
 
             // }
 
-            res.json( row );
+            console.log( err );
+
+            console.log( res );
 
             client.end();
 
