@@ -76,6 +76,8 @@ app.get( '/oauth-callback', async( req, res ) => {
 
             // }
 
+            console.log( 'yes' );
+
             console.log( err );
 
             console.log( res );
@@ -83,6 +85,8 @@ app.get( '/oauth-callback', async( req, res ) => {
             client.end();
 
         } );
+
+        console.log( 'no' );
 
         // client.query( 'SELECT table_schema,table_name FROM information_schema.tables;', ( err, res ) => {
         //     if( err ) throw err;
