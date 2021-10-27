@@ -50,12 +50,36 @@ app.get( '/oauth-callback', async( req, res ) => {
         // Send info to HubSpot
         const responseBody = await axios.post( 'https://api.hubapi.com/oauth/v1/token', params );
 
-        res.json( responseBody.data.refresh_token );
+        // res.json( responseBody.data );
+
+        const refreshToken = responseBody.data.refresh_token;
+        const accessToken = responseBody.data.access_token;
 
         // Get account ID
-        // Check database for account ID
+        const tokenData = await axios.get( `https://api.hubapi.com/oauth/v1/access-tokens/${ accessToken }` );
+
+        // res.json( tokenData.data );
+
+        const hubID = tokenData.data.hub_id;
+
         // Connect to database
         client.connect();
+
+        // Check database for account ID
+        // await client.query( `SELECT hs_account_id FROM users WHERE hs_account_id IN (${ hubID });`, ( err, res ) => {
+
+        //     if( err ) throw err;
+
+        //     for( let row of res.rows ) {
+
+        //         console.log( JSON.stringify( row ) );
+
+        //     }
+
+        //     client.end();
+
+        // } );
+
         // client.query( 'SELECT table_schema,table_name FROM information_schema.tables;', ( err, res ) => {
         //     if( err ) throw err;
         //     for( let row of res.rows ) {
@@ -72,6 +96,19 @@ app.get( '/oauth-callback', async( req, res ) => {
         // } else {
         // Get account ID
         // Store account ID, refresh token, and access token in database
+        await client.query( `INSERT INTO users ( hs_account_id, hs_auth_token, hs_refresh_token ) VALUES ( ${ hubID }, '${ accessToken }', '${ refreshToken }' )`, ( err, res ) => {
+
+            if( err ) throw err;
+
+            for( let row of res.rows ) {
+
+                console.log( JSON.stringify( row ) );
+
+            }
+
+            client.end();
+
+        } );
         // Display confirmation message
         // res.redirect( '/' );
         // }
